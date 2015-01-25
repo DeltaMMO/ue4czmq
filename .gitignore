@@ -1,0 +1,12 @@
+# UE4 cache dirs
+Binaries
+DerivedDataCache
+Intermediate
+Saved
+Build
+
+# Visual studio crap
+*.sdf
+*.sln
+*.suo
+*.opensdf

@@ -1,0 +1,20 @@
+{
+	"FileVersion" : 3,
+	
+	"FriendlyName" : "CZMQ",
+	"Version" : 1,
+	"VersionName" : "4.1",
+	"CreatedBy" : "Palm Stone Games, Inc.",
+	"CreatedByURL" : "https://github.com/DeltaMMO/ue4czmq",
+	"EngineVersion" : "4.6.0",
+	"Description" : "CZMQ integration with UE4",
+	"Category" : "Networking",
+	
+	"Modules" :
+	[
+		{
+			"Name" : "ue4czmq",
+			"Type" : "Runtime"
+		}
+	]
+}
