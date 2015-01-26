@@ -1,5 +1,6 @@
+// Copyright 2015 Palm Stone Games, Inc. All Rights Reserved.
+#pragma once
 #include "ue4czmq.h"
-#include "frame.h"
 
 // Forward declare the t struct so we can use it here
 // Without having to include the whole of czmq, which would severely
@@ -25,7 +26,7 @@ namespace EZmqSocketType
 	};
 }
 
-class FZmqSocket
+class UE4CZMQ_API FZmqSocket
 {
 public:
 	FZmqSocket(EZmqSocketType::Type type);

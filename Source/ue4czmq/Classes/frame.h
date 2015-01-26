@@ -1,3 +1,5 @@
+// Copyright 2015 Palm Stone Games, Inc. All Rights Reserved.
+#pragma once
 #include "ue4czmq.h"
 
 // Forward declare the zframe_t struct so we can use it here
@@ -5,7 +7,7 @@
 // polute our global namespace
 typedef struct _zframe_t zframe_t;
 
-class FZmqFrame
+class UE4CZMQ_API FZmqFrame
 {
 	template<typename byte, typename FDefaultAllocator>
 	friend class TArray;
