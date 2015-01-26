@@ -4,10 +4,10 @@ CZMQ bindings with UE4
 # Installation
 
 Put ue4czmq at the following path:
-<Your projects>/Plugins/ue4czmq
+_Your project_/Plugins/ue4czmq
 
 Create the third party folder for your architecture at:
-<Your projects>/Plugins/ue4czmq/ThirdParty/<Architecture>
+_Your project_/Plugins/ue4czmq/ThirdParty/_Architecture_
 
 In there, create a folder for czmq and libzmq
 
