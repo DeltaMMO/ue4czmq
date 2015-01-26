@@ -32,7 +32,7 @@ namespace UnrealBuildTool.Rules
 
             // CZMQ
             string czmqPath = Path.GetFullPath(Path.Combine(ModulePath, "../../ThirdParty/", Target.Platform.ToString(), "czmq"));
-            PrivateAdditionalLibraries.Add(Path.Combine(czmqPath, "Libraries", "czmq.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(czmqPath, "Libraries", "czmq.lib"));
             PrivateIncludePaths.Add(Path.Combine(czmqPath, "Includes"));
 
             // LIBZMQ
