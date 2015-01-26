@@ -1,6 +1,8 @@
 #include "ue4czmq.h"
 #include "socket.h"
-
+#include "AllowWindowsPlatformTypes.h"
+#include <czmq/czmq.h>
+#include "HideWindowsPlatformTypes.h"
 
 FZmqSocket::FZmqSocket(EZmqSocketType::Type type)
 	: FZmqSocket(zsock_new((int)type))

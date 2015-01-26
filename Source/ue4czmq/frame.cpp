@@ -1,5 +1,8 @@
 #include "ue4czmq.h"
 #include "frame.h"
+#include "AllowWindowsPlatformTypes.h"
+#include <czmq/czmq.h>
+#include "HideWindowsPlatformTypes.h"
 
 FZmqFrame::FZmqFrame(zframe_t* frame)
 	: frame(frame)
@@ -32,7 +35,7 @@ bool FZmqFrame::More()
 	return zframe_more(frame) == 1 ? true : false;
 }
 
-byte* FZmqFrame::GetDataPtr()
+uint8* FZmqFrame::GetDataPtr()
 {
 	return zframe_data(frame);
 }
@@ -42,9 +45,9 @@ size_t FZmqFrame::GetDataSize()
 	return zframe_size(frame);
 }
 
-TArray<byte> FZmqFrame::GetData()
+TArray<uint8> FZmqFrame::GetData()
 {
-	TArray<byte> arr;
+	TArray<uint8> arr;
 	arr.Append(GetDataPtr(), GetDataSize());
 	return arr;
 }

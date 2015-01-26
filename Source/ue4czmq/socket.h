@@ -1,22 +1,27 @@
 #include "ue4czmq.h"
 #include "frame.h"
 
+// Forward declare the t struct so we can use it here
+// Without having to include the whole of czmq, which would severely
+// polute our global namespace
+typedef struct _zsock_t zsock_t;
+
 namespace EZmqSocketType
 {
 	enum Type
 	{
-		Pair = ZMQ_PAIR,
-		Pub = ZMQ_PUB,
-		Sub = ZMQ_SUB,
-		Req = ZMQ_REQ,
-		Rep = ZMQ_REP,
-		Dealer = ZMQ_DEALER,
-		Router = ZMQ_ROUTER,
-		Pull = ZMQ_PULL,
-		Push = ZMQ_PUSH,
-		xPub = ZMQ_XPUB,
-		xSub = ZMQ_XSUB,
-		Stream = ZMQ_STREAM,
+		Pair = 0,
+		Pub = 1,
+		Sub = 2,
+		Req = 3,
+		Rep = 4,
+		Dealer = 5,
+		Router = 6,
+		Pull = 7,
+		Push = 8,
+		xPub = 9,
+		xSub = 10,
+		Stream = 11,
 	};
 }
 
@@ -48,6 +53,104 @@ public:
 
 	FZmqFrame RecvFrame(bool wait = true);
 	TArray<FZmqFrame> RecvMessage(bool wait = true);
+	
+	//  Get socket options
+	int Tos();
+	FString ZapDomain();
+	int Mechanism();
+	int PlainServer();
+	FString PlainUsername();
+	FString PlainPassword();
+	int CurveServer();
+	FString CurvePublickey();
+	FString CurveSecretkey();
+	FString CurveServerkey();
+	int GssapiServer();
+	int GssapiPlaintext();
+	FString GssapiPrincipal();
+	FString GssapiServicePrincipal();
+	int Ipv6();
+	int Immediate();
+	int Ipv4only();
+	EZmqSocketType::Type Type();
+	int Sndhwm();
+	int Rcvhwm();
+	int Affinity();
+	FString Identity();
+	int Rate();
+	int RecoveryIvl();
+	int Sndbuf();
+	int Rcvbuf();
+	int Linger();
+	int ReconnectIvl();
+	int ReconnectIvlMax();
+	int Backlog();
+	int Maxmsgsize();
+	int Multicast_hops();
+	int Rcvtimeo();
+	int Sndtimeo();
+	int TcpKeepalive();
+	int TcpKeepaliveIdle();
+	int TcpKeepaliveCnt();
+	int TcpKeepaliveIntvl();
+	FString TcpAcceptFilter();
+	int Rcvmore();
+	int Fd();
+	int Events();
+	FString LastEndpoint();
+
+	//  Set socket options
+	void SetTos(int tos);
+	void SetRouterHandover(int router_handover);
+	void SetRouterMandatory(int router_mandatory);
+	void SetProbeRouter(int probe_router);
+	void SetReqRelaxed(int req_relaxed);
+	void SetReqCorrelate(int req_correlate);
+	void SetConflate(int conflate);
+	void SetZapDomain(FString zap_domain);
+	void SetPlainServer(int plain_server);
+	void SetPlainUsername(FString plain_username);
+	void SetPlainPassword(FString plain_password);
+	void SetCurveServer(int curve_server);
+	void SetCurvePublickey(FString curve_publickey);
+	void SetCurvePublickey(const uint8 *curve_publickey);
+	void SetCurveSecretkey(FString curve_secretkey);
+	void SetCurveSecretkey(const uint8 *curve_secretkey);
+	void SetCurveServerkey(FString curve_serverkey);
+	void SetCurveServerkey(const uint8 *curve_serverkey);
+	void SetGssapiServer(int gssapi_server);
+	void SetGssapiPlaintext(int gssapi_plaintext);
+	void SetGssapiPrincipal(FString gssapi_principal);
+	void SetGssapiServicePrincipal(FString gssapi_service_principal);
+	void SetIpv6(int ipv6);
+	void SetImmediate(int immediate);
+	void SetRouterRaw(int router_raw);
+	void SetIpv4only(int ipv4only);
+	void SetDelayAtachOnConnect(int delay_attach_on_connect);
+	void SetSndhwm(int sndhwm);
+	void SetRcvhwm(int rcvhwm);
+	void SetAffinity(int affinity);
+	void SetSubscribe(FString subscribe);
+	void SetUnsubscribe(FString unsubscribe);
+	void SetIdentity(FString identity);
+	void SetRate(int rate);
+	void SetRecoveryIvl(int recovery_ivl);
+	void SetSndbuf(int sndbuf);
+	void SetRcvbuf(int rcvbuf);
+	void SetLinger(int linger);
+	void SetReconnectIvl(int reconnect_ivl);
+	void SetReconnectIvlMax(int reconnect_ivl_max);
+	void SetBacklog(int backlog);
+	void SetMaxmsgsize(int maxmsgsize);
+	void SetMulticastHops(int multicast_hops);
+	void SetRcvtimeo(int rcvtimeo);
+	void SetSndtimeo(int sndtimeo);
+	void SetXpubVerbose(int xpub_verbose);
+	void SetTcpKeepalive(int tcp_keepalive);
+	void SetTcpKeepaliveIdle(int tcp_keepalive_idle);
+	void SetTcpKeepaliveCnt(int tcp_keepalive_cnt);
+	void SetTcpKeepaliveIntvl(int tcp_keepalive_intvl);
+	void SetTcpAcceptFilter(FString tcp_accept_filter);
 private:
 	FZmqSocket(zsock_t* sock);
 	zsock_t* sock;
