@@ -19,4 +19,4 @@ If libsodium, libzmq or czmq were compiled as a DLL, the DLL should be placed in
 ## Precompiled third party headers
 Precompiled versions of the needed libraries of select Platforms can be found at https://drive.google.com/folderview?id=0ByVeBij1wH9Vd3NSTUx5YU1XdjQ&usp=sharing
 
-Place the ThirdParty folder in the archive in **Your project**/Plugins/ue4czmq/ and the DLLs in the root at **Your Project**/Binaries/**Architecture**
+Extract the archive at the root of your project, the folder structure is set correctly in the archive
