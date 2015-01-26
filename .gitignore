@@ -1,9 +1,10 @@
-# UE4 cache dirs
+# UE4 dirs
 Binaries
 DerivedDataCache
 Intermediate
 Saved
 Build
+ThirdParty
 
 # Visual studio crap
 *.sdf
