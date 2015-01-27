@@ -3,5 +3,6 @@
 #pragma once
 
 #include "Engine.h"
+#include "sockettype.h"
 #include "frame.h"
 #include "socket.h"

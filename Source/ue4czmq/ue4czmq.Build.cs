@@ -13,7 +13,7 @@ namespace UnrealBuildTool.Rules
             //PrivateIncludePaths.AddRange(new string[] {});
 
             // Dependencies
-            PublicDependencyModuleNames.AddRange(new string[] { "Core", "Engine", });
+            PublicDependencyModuleNames.AddRange(new string[] { "Core", "Engine", "CoreUObject" });
             
             //PrivateDependencyModuleNames.AddRange(new string[] {});
 
