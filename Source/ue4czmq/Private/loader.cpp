@@ -16,4 +16,4 @@ void ue4czmqImpl::ShutdownModule()
 	zsys_shutdown();
 }
 
-IMPLEMENT_GAME_MODULE(ue4czmqImpl, ue4czmq)
+IMPLEMENT_MODULE(ue4czmqImpl, ue4czmq)

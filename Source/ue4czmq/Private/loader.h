@@ -3,7 +3,7 @@
 #pragma once
 #include "ue4czmq.h"
 
-class ue4czmqImpl : public FDefaultGameModuleImpl
+class ue4czmqImpl : public FDefaultModuleImpl
 {
 public:
 	/** IModuleInterface implementation */
