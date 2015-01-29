@@ -14,6 +14,10 @@ class UE4CZMQ_API FZmqFrame
 	friend class FZmqSocket;
 
 public:
+	// Create a new frame with the passed data. The data will be copied.
+	FZmqFrame(uint8* dataPtr, size_t dataSize, bool more = false);
+	// Create a new frame with the passed data. The data will be copied.
+	FZmqFrame(TArray<uint8> data, bool more = false);
 	~FZmqFrame();
 	FZmqFrame(FZmqFrame&&);
 
@@ -22,6 +26,8 @@ public:
 
 	// Returns true if more frames follow after this one within the same message
 	bool More();
+	// Set the more flag
+	void SetMore(bool);
 
 	// Returns a copy of the data in the frame, stored inside a TArray<byte>
 	TArray<uint8> GetData();

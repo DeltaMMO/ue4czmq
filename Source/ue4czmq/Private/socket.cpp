@@ -153,3 +153,25 @@ TArray<FZmqFrame> FZmqSocket::RecvMessage(bool wait)
 
 	return frames;
 }
+
+bool FZmqSocket::SendFrame(FZmqFrame frame)
+{
+	int flag = ZFRAME_REUSE;
+	if (frame.More()) flag += ZFRAME_MORE;
+
+	int rc = zframe_send(&frame.frame, sock, flag);
+	return rc != -1;
+}
+
+bool FZmqSocket::SendMessage(TArray<FZmqFrame> msg)
+{
+	int rc;
+	for (int32 i = 0; i < msg.Num() - 1; i++)
+	{
+		rc = zframe_send(&msg[i].frame, sock, ZFRAME_MORE + ZFRAME_REUSE);
+		if (rc == -1) return false;
+	}
+
+	rc = zframe_send(&msg[msg.Num() - 1].frame, sock, ZFRAME_REUSE);
+	return rc != -1;
+}

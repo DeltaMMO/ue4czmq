@@ -35,6 +35,10 @@ public:
 
 	FZmqFrame RecvFrame(bool wait = true);
 	TArray<FZmqFrame> RecvMessage(bool wait = true);
+	// Send a frame
+	bool SendFrame(FZmqFrame frame);
+	// Send a frame
+	bool SendMessage(TArray<FZmqFrame> msg);
 	
 	//  Get socket options
 	int Tos();

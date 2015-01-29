@@ -6,6 +6,18 @@
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
 
+
+FZmqFrame::FZmqFrame(uint8* dataPtr, size_t dataSize, bool more)
+	: frame(zframe_new(dataPtr, dataSize))
+{
+	zframe_set_more(frame, more);
+}
+
+FZmqFrame::FZmqFrame(TArray<uint8> data, bool more)
+	: FZmqFrame(data.GetData(), data.Num(), more)
+{
+}
+
 FZmqFrame::FZmqFrame(zframe_t* frame)
 	: frame(frame)
 {
@@ -35,6 +47,11 @@ bool FZmqFrame::Valid()
 bool FZmqFrame::More()
 {
 	return zframe_more(frame) == 1 ? true : false;
+}
+
+void FZmqFrame::SetMore(bool more)
+{
+	zframe_set_more(frame, more);
 }
 
 uint8* FZmqFrame::GetDataPtr()
