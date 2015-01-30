@@ -140,7 +140,7 @@ FZmqFrame FZmqSocket::RecvFrame(bool wait)
 	return FZmqFrame(frame);
 }
 
-TArray<FZmqFrame> FZmqSocket::RecvMessage(bool wait)
+TArray<FZmqFrame> FZmqSocket::RecvMsg(bool wait)
 {
 	TArray<FZmqFrame> frames;
 	FZmqFrame f(nullptr);
@@ -163,7 +163,7 @@ bool FZmqSocket::SendFrame(FZmqFrame frame)
 	return rc != -1;
 }
 
-bool FZmqSocket::SendMessage(TArray<FZmqFrame> msg)
+bool FZmqSocket::SendMsg(TArray<FZmqFrame> msg)
 {
 	int rc;
 	for (int32 i = 0; i < msg.Num() - 1; i++)

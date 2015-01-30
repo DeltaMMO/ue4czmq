@@ -34,11 +34,11 @@ public:
 	bool Attach(FString format, bool serverish);
 
 	FZmqFrame RecvFrame(bool wait = true);
-	TArray<FZmqFrame> RecvMessage(bool wait = true);
+	TArray<FZmqFrame> RecvMsg(bool wait = true);
 	// Send a frame
 	bool SendFrame(FZmqFrame frame);
 	// Send a frame
-	bool SendMessage(TArray<FZmqFrame> msg);
+	bool SendMsg(TArray<FZmqFrame> msg);
 	
 	//  Get socket options
 	int Tos();
