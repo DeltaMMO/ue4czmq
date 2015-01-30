@@ -15,9 +15,9 @@ class UE4CZMQ_API FZmqFrame
 
 public:
 	// Create a new frame with the passed data. The data will be copied.
-	FZmqFrame(uint8* dataPtr, size_t dataSize, bool more = false);
+	FZmqFrame(const uint8* dataPtr, size_t dataSize, bool more = false);
 	// Create a new frame with the passed data. The data will be copied.
-	FZmqFrame(TArray<uint8> data, bool more = false);
+	FZmqFrame(const TArray<uint8> data, bool more = false);
 	~FZmqFrame();
 	FZmqFrame(FZmqFrame&&);
 
