@@ -175,3 +175,13 @@ bool FZmqSocket::SendMsg(TArray<FZmqFrame> msg)
 	rc = zframe_send(&msg[msg.Num() - 1].frame, sock, ZFRAME_REUSE);
 	return rc != -1;
 }
+
+bool FZmqSocket::SendData(const uint8* data, size_t len, bool more)
+{
+	return SendFrame(FZmqFrame(data, len, more));
+}
+
+bool FZmqSocket::SendData(const char* data, size_t len, bool more)
+{
+	return SendData((const uint8*)data, len, more);
+}

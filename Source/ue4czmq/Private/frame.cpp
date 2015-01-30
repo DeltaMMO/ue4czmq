@@ -7,13 +7,13 @@
 #include "HideWindowsPlatformTypes.h"
 
 
-FZmqFrame::FZmqFrame(uint8* dataPtr, size_t dataSize, bool more)
+FZmqFrame::FZmqFrame(const uint8* dataPtr, size_t dataSize, bool more)
 	: frame(zframe_new(dataPtr, dataSize))
 {
 	zframe_set_more(frame, more);
 }
 
-FZmqFrame::FZmqFrame(TArray<uint8> data, bool more)
+FZmqFrame::FZmqFrame(const TArray<uint8> data, bool more)
 	: FZmqFrame(data.GetData(), data.Num(), more)
 {
 }

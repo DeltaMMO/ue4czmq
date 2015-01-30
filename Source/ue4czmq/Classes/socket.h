@@ -39,6 +39,8 @@ public:
 	bool SendFrame(FZmqFrame frame);
 	// Send a frame
 	bool SendMsg(TArray<FZmqFrame> msg);
+	bool SendData(const uint8* data, size_t len, bool more = false);
+	bool SendData(const char* data, size_t len, bool more = false);
 	
 	//  Get socket options
 	int Tos();
