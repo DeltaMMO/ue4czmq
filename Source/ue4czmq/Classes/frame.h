@@ -22,21 +22,21 @@ public:
 	FZmqFrame(FZmqFrame&&);
 
 	// Returns true if this frame is valid
-	bool Valid();
+	bool Valid() const;
 
 	// Returns true if more frames follow after this one within the same message
-	bool More();
+	bool More() const;
 	// Set the more flag
 	void SetMore(bool);
 
 	// Returns a copy of the data in the frame, stored inside a TArray<byte>
-	TArray<uint8> GetData();
+	TArray<uint8> GetData() const;
 
 	// Returns a pointer to the data in the frame, this pointer is only valid for the lifetime of the frame
-	uint8* GetDataPtr();
+	uint8* GetDataPtr() const;
 
 	// Returns the amount of data
-	size_t GetDataSize();
+	size_t GetDataSize() const;
 private:
 	FZmqFrame(zframe_t* frame);
 	FZmqFrame(const FZmqFrame&);

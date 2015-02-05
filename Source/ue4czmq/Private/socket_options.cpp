@@ -6,217 +6,217 @@
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
 
-int FZmqSocket::Tos()
+int FZmqSocket::Tos() const
 {
 	return zsock_tos(sock);
 }
 
-FString FZmqSocket::ZapDomain()
+FString FZmqSocket::ZapDomain() const
 {
 	return FString(zsock_zap_domain(sock));
 }
 
-int FZmqSocket::Mechanism()
+int FZmqSocket::Mechanism() const
 {
 	return zsock_mechanism(sock);
 }
 
-int FZmqSocket::PlainServer()
+int FZmqSocket::PlainServer() const
 {
 	return zsock_plain_server(sock);
 }
 
-FString FZmqSocket::PlainUsername()
+FString FZmqSocket::PlainUsername() const
 {
 	return FString(zsock_plain_username(sock));
 }
 
-FString FZmqSocket::PlainPassword()
+FString FZmqSocket::PlainPassword() const
 {
 	return FString(zsock_plain_password(sock));
 }
 
-int FZmqSocket::CurveServer()
+int FZmqSocket::CurveServer() const
 {
 	return zsock_curve_server(sock);
 }
 
-FString FZmqSocket::CurvePublickey()
+FString FZmqSocket::CurvePublickey() const
 {
 	return FString(zsock_curve_publickey(sock));
 }
 
-FString FZmqSocket::CurveSecretkey()
+FString FZmqSocket::CurveSecretkey() const
 {
 	return zsock_curve_secretkey(sock);
 }
 
-FString FZmqSocket::CurveServerkey()
+FString FZmqSocket::CurveServerkey() const
 {
 	return zsock_curve_serverkey(sock);
 }
 
-int FZmqSocket::GssapiServer()
+int FZmqSocket::GssapiServer() const
 {
 	return zsock_gssapi_server(sock);
 }
 
-int FZmqSocket::GssapiPlaintext()
+int FZmqSocket::GssapiPlaintext() const
 {
 	return zsock_gssapi_plaintext(sock);
 }
 
-FString FZmqSocket::GssapiPrincipal()
+FString FZmqSocket::GssapiPrincipal() const
 {
 	return zsock_gssapi_principal(sock);
 }
 
-FString FZmqSocket::GssapiServicePrincipal()
+FString FZmqSocket::GssapiServicePrincipal() const
 {
 	return zsock_gssapi_service_principal(sock);
 }
 
-int FZmqSocket::Ipv6()
+int FZmqSocket::Ipv6() const
 {
 	return zsock_ipv6(sock);
 }
 
-int FZmqSocket::Immediate()
+int FZmqSocket::Immediate() const
 {
 	return zsock_immediate(sock);
 }
 
-int FZmqSocket::Ipv4only()
+int FZmqSocket::Ipv4only() const
 {
 	return zsock_ipv4only(sock);
 }
 
-EZmqSocketType::Type FZmqSocket::Type()
+EZmqSocketType::Type FZmqSocket::Type() const
 {
 	return (EZmqSocketType::Type) zsock_type(sock);
 }
 
-int FZmqSocket::Sndhwm()
+int FZmqSocket::Sndhwm() const
 {
 	return zsock_sndhwm(sock);
 }
 
-int FZmqSocket::Rcvhwm()
+int FZmqSocket::Rcvhwm() const
 {
 	return zsock_rcvhwm(sock);
 }
 
-int FZmqSocket::Affinity()
+int FZmqSocket::Affinity() const
 {
 	return zsock_affinity(sock);
 }
 
-FString FZmqSocket::Identity()
+FString FZmqSocket::Identity() const
 {
 	return FString(zsock_identity(sock));
 }
 
-int FZmqSocket::Rate()
+int FZmqSocket::Rate() const
 {
 	return zsock_rate(sock);
 }
 
-int FZmqSocket::RecoveryIvl()
+int FZmqSocket::RecoveryIvl() const
 {
 	return zsock_recovery_ivl(sock);
 }
 
-int FZmqSocket::Sndbuf()
+int FZmqSocket::Sndbuf() const
 {
 	return zsock_sndbuf(sock);
 }
 
-int FZmqSocket::Rcvbuf()
+int FZmqSocket::Rcvbuf() const
 {
 	return zsock_rcvbuf(sock);
 }
 
-int FZmqSocket::Linger()
+int FZmqSocket::Linger() const
 {
 	return zsock_linger(sock);
 }
 
-int FZmqSocket::ReconnectIvl()
+int FZmqSocket::ReconnectIvl() const
 {
 	return zsock_reconnect_ivl(sock);
 }
 
-int FZmqSocket::ReconnectIvlMax()
+int FZmqSocket::ReconnectIvlMax() const
 {
 	return zsock_reconnect_ivl_max(sock);
 }
 
-int FZmqSocket::Backlog()
+int FZmqSocket::Backlog() const
 {
 	return zsock_backlog(sock);
 }
 
-int FZmqSocket::Maxmsgsize()
+int FZmqSocket::Maxmsgsize() const
 {
 	return zsock_maxmsgsize(sock);
 }
 
-int FZmqSocket::Multicast_hops()
+int FZmqSocket::Multicast_hops() const
 {
 	return zsock_multicast_hops(sock);
 }
 
-int FZmqSocket::Rcvtimeo()
+int FZmqSocket::Rcvtimeo() const
 {
 	return zsock_rcvtimeo(sock);
 }
 
-int FZmqSocket::Sndtimeo()
+int FZmqSocket::Sndtimeo() const
 {
 	return zsock_sndtimeo(sock);
 }
 
-int FZmqSocket::TcpKeepalive()
+int FZmqSocket::TcpKeepalive() const
 {
 	return zsock_tcp_keepalive(sock);
 }
 
-int FZmqSocket::TcpKeepaliveIdle()
+int FZmqSocket::TcpKeepaliveIdle() const
 {
 	return zsock_tcp_keepalive_idle(sock);
 }
 
-int FZmqSocket::TcpKeepaliveCnt()
+int FZmqSocket::TcpKeepaliveCnt() const
 {
 	return zsock_tcp_keepalive_cnt(sock);
 }
 
-int FZmqSocket::TcpKeepaliveIntvl()
+int FZmqSocket::TcpKeepaliveIntvl() const
 {
 	return zsock_tcp_keepalive_intvl(sock);
 }
 
-FString FZmqSocket::TcpAcceptFilter()
+FString FZmqSocket::TcpAcceptFilter() const
 {
 	return FString(zsock_tcp_accept_filter(sock));
 }
 
-int FZmqSocket::Rcvmore()
+int FZmqSocket::Rcvmore() const
 {
 	return zsock_rcvmore(sock);
 }
 
-int FZmqSocket::Fd()
+int FZmqSocket::Fd() const
 {
 	return zsock_fd(sock);
 }
 
-int FZmqSocket::Events()
+int FZmqSocket::Events() const
 {
 	return zsock_events(sock);
 }
 
-FString FZmqSocket::LastEndpoint()
+FString FZmqSocket::LastEndpoint() const
 {
 	return FString(zsock_last_endpoint(sock));
 }

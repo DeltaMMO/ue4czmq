@@ -39,12 +39,12 @@ FZmqFrame::~FZmqFrame()
 	if (frame != nullptr) zframe_destroy(&frame);
 }
 
-bool FZmqFrame::Valid()
+bool FZmqFrame::Valid() const
 {
 	return frame != nullptr;
 }
 
-bool FZmqFrame::More()
+bool FZmqFrame::More() const
 {
 	return zframe_more(frame) == 1 ? true : false;
 }
@@ -54,17 +54,17 @@ void FZmqFrame::SetMore(bool more)
 	zframe_set_more(frame, more);
 }
 
-uint8* FZmqFrame::GetDataPtr()
+uint8* FZmqFrame::GetDataPtr() const
 {
 	return zframe_data(frame);
 }
 
-size_t FZmqFrame::GetDataSize()
+size_t FZmqFrame::GetDataSize() const
 {
 	return zframe_size(frame);
 }
 
-TArray<uint8> FZmqFrame::GetData()
+TArray<uint8> FZmqFrame::GetData() const
 {
 	TArray<uint8> arr;
 	arr.Append(GetDataPtr(), GetDataSize());

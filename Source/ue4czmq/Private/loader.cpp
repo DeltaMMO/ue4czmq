@@ -1,10 +1,16 @@
 // Copyright 2015 Palm Stone Games, Inc. All Rights Reserved.
 
 #include "ue4czmq.h"
-#include "loader.h"
 #include "AllowWindowsPlatformTypes.h"
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
+
+class ue4czmqImpl : public FDefaultModuleImpl
+{
+public:
+	void StartupModule();
+	void ShutdownModule();
+};
 
 void ue4czmqImpl::StartupModule()
 {
