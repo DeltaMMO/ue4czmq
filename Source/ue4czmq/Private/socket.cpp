@@ -154,6 +154,14 @@ TArray<FZmqFrame> FZmqSocket::RecvMsg(bool wait)
 	return frames;
 }
 
+bool FZmqSocket::Poll(int timeout)
+{
+	zpoller_t* poller = zpoller_new(sock, nullptr);
+	void* s = zpoller_wait(poller, timeout * ZMQ_POLL_MSEC);
+	zpoller_destroy(&poller);
+	return s != nullptr;
+}
+
 bool FZmqSocket::SendFrame(FZmqFrame frame)
 {
 	int flag = ZFRAME_REUSE;
