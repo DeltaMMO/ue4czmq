@@ -26,6 +26,7 @@ public:
 	static FZmqSocket* CreateXPub(EZmqSocketType::Type type, FString format);
 	static FZmqSocket* CreateXSub(EZmqSocketType::Type type, FString format);
 	static FZmqSocket* CreateStream(EZmqSocketType::Type type, FString format);
+	void Destroy();
 
 	bool Bind(FString format, int* port = nullptr);
 	bool Unbind(FString format);

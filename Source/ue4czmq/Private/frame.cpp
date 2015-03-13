@@ -2,9 +2,13 @@
 
 #include "ue4czmq.h"
 #include "frame.h"
+#ifdef _WIN32
 #include "AllowWindowsPlatformTypes.h"
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
+#else
+#include <czmq/czmq.h>
+#endif
 
 
 FZmqFrame::FZmqFrame(const uint8* dataPtr, size_t dataSize, bool more)
@@ -32,6 +36,13 @@ FZmqFrame::FZmqFrame(FZmqFrame&& other)
 	: frame(other.frame)
 {
 	other.frame = nullptr;
+}
+
+FZmqFrame& FZmqFrame::operator=(FZmqFrame&& other)
+{
+	frame = other.frame;
+	other.frame = nullptr;
+	return *this;
 }
 
 FZmqFrame::~FZmqFrame()

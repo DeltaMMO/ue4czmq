@@ -2,10 +2,13 @@
 
 #include "ue4czmq.h"
 #include "socket.h"
+#ifdef _WIN32
 #include "AllowWindowsPlatformTypes.h"
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
-
+#else
+#include <czmq/czmq.h>
+#endif
 int FZmqSocket::Tos() const
 {
 	return zsock_tos(sock);

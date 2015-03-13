@@ -2,9 +2,14 @@
 
 #include "ue4czmq.h"
 #include "socket.h"
+#include <utility>
+#ifdef _WIN32
 #include "AllowWindowsPlatformTypes.h"
 #include <czmq/czmq.h>
 #include "HideWindowsPlatformTypes.h"
+#else
+#include <czmq/czmq.h>
+#endif
 
 FZmqSocket::FZmqSocket(EZmqSocketType::Type type)
 	: FZmqSocket(zsock_new((int)type))
@@ -95,9 +100,20 @@ FZmqSocket* FZmqSocket::CreateStream(EZmqSocketType::Type type, FString format)
 
 FZmqSocket::~FZmqSocket()
 {
-	zsock_destroy(&sock);
+	Destroy();
 }
 
+void FZmqSocket::Destroy()
+{
+	if (sock != nullptr)
+	{
+		zsock_destroy(&sock);
+	}
+}
+
+#if __clang__
+#pragma clang diagnostic ignored "-Wformat-security"
+#endif
 bool FZmqSocket::Bind(FString format, int* port)
 {
 	int p = zsock_bind(sock, TCHAR_TO_UTF8(*format));
@@ -130,6 +146,9 @@ bool FZmqSocket::Attach(FString format, bool serverish)
 	int rc = zsock_attach(sock, TCHAR_TO_UTF8(*format), serverish);
 	return rc != -1;
 }
+#if __clang__
+#pragma clang diagnostic pop
+#endif
 
 FZmqFrame FZmqSocket::RecvFrame(bool wait)
 {
@@ -147,7 +166,7 @@ TArray<FZmqFrame> FZmqSocket::RecvMsg(bool wait)
 
 	do
 	{
-		f = RecvFrame(wait);
+		f = std::move(RecvFrame(wait));
 		if (f.Valid()) frames.Add(f);
 	} while (f.Valid() && f.More());
 

@@ -20,6 +20,7 @@ public:
 	FZmqFrame(const TArray<uint8> data, bool more = false);
 	~FZmqFrame();
 	FZmqFrame(FZmqFrame&&);
+	FZmqFrame& operator=(FZmqFrame&&);
 
 	// Returns true if this frame is valid
 	bool Valid() const;
